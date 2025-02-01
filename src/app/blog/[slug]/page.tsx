@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   try {
     const post = await getPostBySlug(params.slug);
     return {
-      title: post.data[0]?.attributes.title,
+      title: post.data[0]?.title,
       // ... other metadata
     };
   } catch (error) {
