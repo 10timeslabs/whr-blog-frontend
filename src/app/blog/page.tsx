@@ -1,10 +1,9 @@
-import BlogWithRightSidebar from "@/components/Blog/BlogWithRightSidebar";
-import Header from "@/components/Layouts/header";
+import React from 'react'
 
-export default function Page() {
+const page = () => {
   return (
-    <>
-      <BlogWithRightSidebar />
-    </>
-  );
+    <div>page</div>
+  )
 }
+
+export default page

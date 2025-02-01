@@ -6,9 +6,10 @@ import Image from "next/image";
 import { BlogData, BlogResponse } from "@/types/blog";
 import { format } from "date-fns";
 import ReactMarkdown, { Components } from "react-markdown";
-import axios from "axios";
-import { baseApiUrl } from "@/config";
+import strapiApi from '@/lib/axios';
+import { getPostBySlug } from '@/lib/api';
 import SingleBlogSkeleton from "@/components/Blog/SingleBlogSkeleton";
+import { getImageUrl } from '@/utils/imageUrl';
 
 interface SingleBlogContentProps {
   slug: string;
@@ -70,14 +71,12 @@ const SingleBlogContent: React.FC<SingleBlogContentProps> = ({ slug }) => {
       setLoading(true);
       setError(null);
       try {
-        const response = await axios.get<BlogResponse>(
-          `${baseApiUrl}/api/blogs?filters[slug][$eq]=${slug}&populate=*`
-        );
-        if (response.data.data.length === 0) {
+        const response = await getPostBySlug(slug);
+        if (response.data.length === 0) {
           setError("Blog post not found");
           return;
         }
-        setBlog(response.data.data[0]);
+        setBlog(response.data[0]);
       } catch (error) {
         console.error("Error fetching blog:", error);
         setError("Failed to load blog post");
@@ -106,14 +105,14 @@ const SingleBlogContent: React.FC<SingleBlogContentProps> = ({ slug }) => {
               <div className="blog-details-desc">
                 <div className="article-image">
                   <Image
-                    src={blog.attributes.image.data.attributes.url}
+                    src={getImageUrl(blog.image.url)}
                     alt={
-                      blog.attributes.image.data.attributes.alternativeText ||
-                      blog.attributes.title
+                      blog.image.alternativeText ||
+                      blog.title
                     }
-                    width={1250}
-                    height={750}
-                    style={{ aspectRatio: "1250 / 750" }}
+                    width={1200}
+                    height={800}
+                    style={{ aspectRatio: "1200 / 800" }}
                     className="blog-main-image"
                   />
                 </div>
@@ -121,8 +120,8 @@ const SingleBlogContent: React.FC<SingleBlogContentProps> = ({ slug }) => {
                 <div className="article-content">
                   <ul className="entry-list">
                     <li>
-                      <time dateTime={blog.attributes.date}>
-                        {format(new Date(blog.attributes.date), "do MMMM yyyy")}
+                      <time dateTime={blog.date}>
+                        {format(new Date(blog.date), "do MMMM yyyy")}
                       </time>
                     </li>
                   </ul>
@@ -131,7 +130,7 @@ const SingleBlogContent: React.FC<SingleBlogContentProps> = ({ slug }) => {
                     components={MarkdownComponents}
                     className="article-content"
                   >
-                    {blog.attributes.blogDetailsText}
+                    {blog.blogDetailsText}
                   </ReactMarkdown>
 
                   <div className="article-share">

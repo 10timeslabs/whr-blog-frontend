@@ -4,8 +4,8 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { BlogResponse } from "@/types/blog";
 import { format } from "date-fns";
-import axios from "axios";
-import { baseApiUrl } from "@/config";
+import strapiApi from '@/lib/axios';
+import { getImageUrl } from '@/utils/imageUrl';
 
 const SidebarSkeleton = () => (
   <div className="animate-pulse">
@@ -31,8 +31,8 @@ const Sidebar: React.FC = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get<BlogResponse>(
-          `${baseApiUrl}/api/blogs?populate=*`
+        const response = await strapiApi.get<BlogResponse>(
+          `/api/blogs?populate=*`
         );
         setBlogs(response.data);
       } catch (error) {
@@ -49,7 +49,7 @@ const Sidebar: React.FC = () => {
 
   const categories = blogs?.data.reduce(
     (acc: { [key: string]: number }, blog) => {
-      const category = blog.attributes.title.split(" ")[0];
+      const category = blog.title.split(" ")[0];
       acc[category] = (acc[category] || 0) + 1;
       return acc;
     },
@@ -81,22 +81,22 @@ const Sidebar: React.FC = () => {
 
           {recentPosts?.map((post) => (
             <article className="item" key={post.id}>
-              <Link href={`/blog/${post.attributes.slug}`} className="thumb">
+              <Link href={`/blog/${post.slug}`} className="thumb">
                 <span
                   className="fullimage"
                   role="img"
                   style={{
-                    backgroundImage: `url(${post.attributes.image.data.attributes.url})`,
+                    backgroundImage: `url(${getImageUrl(post.image.url)})`,
                   }}
                 ></span>
               </Link>
               <div className="info">
                 <span>
-                  {format(new Date(post.attributes.date), "do MMMM yyyy")}
+                  {format(new Date(post.date), "do MMMM yyyy")}
                 </span>
                 <h4 className="title usmall">
-                  <Link href={`/blog/${post.attributes.slug}`}>
-                    {post.attributes.title}
+                  <Link href={`/blog/${post.slug}`}>
+                    {post.title}
                   </Link>
                 </h4>
               </div>

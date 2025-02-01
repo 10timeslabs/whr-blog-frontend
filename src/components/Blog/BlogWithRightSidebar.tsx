@@ -4,10 +4,10 @@ import React from "react";
 import Link from "next/link";
 import Sidebar from "./Sidebar";
 import Image from "next/image";
-import axios from "axios";
-import { baseApiUrl } from "@/config";
 import { BlogResponse } from "@/types/blog";
 import BlogSkeleton from "@/components/Blog/BlogSkeleton";
+import strapiApi from "@/lib/axios";
+import { getImageUrl } from '@/utils/imageUrl';
 
 const BlogWithRightSidebar: React.FC = () => {
   const [blogs, setBlogs] = React.useState<BlogResponse>();
@@ -18,8 +18,8 @@ const BlogWithRightSidebar: React.FC = () => {
     const getBlogs = async () => {
       setIsLoading(true);
       try {
-        const response = await axios.get(
-          `${baseApiUrl}/api/blogs?populate=*&pagination[page]=${currentPage}&pagination[pageSize]=6`
+        const response = await strapiApi.get(
+          `/api/blogs?populate=*&pagination[page]=${currentPage}&pagination[pageSize]=6`
         );
         setBlogs(response.data);
       } catch (error) {
@@ -59,13 +59,10 @@ const BlogWithRightSidebar: React.FC = () => {
                   <div className="col-lg-6 col-md-6" key={post.id}>
                     <div className="single-blog-card">
                       <div className="blog-image">
-                        <Link href={`/blog/${post.attributes.slug}`}>
+                        <Link href={`/blog/${post.slug}`}>
                           <Image
-                            src={post.attributes.image.data.attributes.url}
-                            alt={
-                              post.attributes.image.data.attributes
-                                .alternativeText || post.attributes.title
-                            }
+                            src={getImageUrl(post.image.url)}
+                            alt={post.image.alternativeText || post.title}
                             width={750}
                             height={800}
                             style={{ aspectRatio: "1250 / 750" }}
@@ -74,15 +71,10 @@ const BlogWithRightSidebar: React.FC = () => {
                       </div>
                       <div className="blog-content">
                         <h3>
-                          <Link href={`/blog/${post.attributes.slug}`}>
-                            {post.attributes.title}
-                          </Link>
+                          <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                         </h3>
-                        <p>{post.attributes.shortText}</p>
-                        <Link
-                          href={`/blog/${post.attributes.slug}`}
-                          className="blog-btn"
-                        >
+                        <p>{post.shortText}</p>
+                        <Link href={`/blog/${post.slug}`} className="blog-btn">
                           View More
                         </Link>
                       </div>
