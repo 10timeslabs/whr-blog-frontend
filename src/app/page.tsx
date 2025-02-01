@@ -1,7 +1,9 @@
+import BlogWithRightSidebar from "@/components/Blog/BlogWithRightSidebar";
+
 export default function Home() {
   return (
     <>
-      <div>Hii</div>
+      <BlogWithRightSidebar />
     </>
   );
 }

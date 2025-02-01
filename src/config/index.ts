@@ -1,1 +1,1 @@
-export const baseApiUrl = process.env.NEXT_PUBLIC_API_URL;
+export const baseApiUrl = process.env.NEXT_PUBLIC_STRAPI_API_URL;
