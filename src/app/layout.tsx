@@ -45,8 +45,7 @@ const monoton = Monoton({
 });
 
 export const metadata: Metadata = {
-  title: "Stax - React Nextjs IT Services & Startup Template",
-  description: "React Nextjs IT Services & Startup Template",
+  title: "Whr.ai Blogs",
 };
 
 export default function RootLayout({

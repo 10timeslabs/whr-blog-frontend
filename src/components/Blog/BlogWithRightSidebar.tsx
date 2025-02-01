@@ -68,6 +68,7 @@ const BlogWithRightSidebar: React.FC = () => {
                             }
                             width={750}
                             height={800}
+                            style={{ aspectRatio: "1250 / 750" }}
                           />
                         </Link>
                       </div>
