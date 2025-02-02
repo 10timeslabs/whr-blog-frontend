@@ -3085,14 +3085,7 @@ Blog Details Area CSS
 }
 .blog-details-desc .article-share .share-social li a i:hover {
   color: var(--white-color);
-  background: radial-gradient(
-    circle,
-    #a66bff,
-    #c666ef,
-    #dd62df,
-    #ee61cf,
-    #fb64bf
-  );
+  background: var(--main-color);
 }
 .blog-details-desc .article-comments {
   margin-top: 35px;
