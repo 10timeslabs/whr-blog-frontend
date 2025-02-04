@@ -35,7 +35,7 @@ const MarkdownComponents: Components = {
       {props.children}
       <div className="quote-shape">
         <Image
-          src="/circle-shape.png"
+          src="/blog/circle-shape.png"
           alt="quote shape"
           width={150}
           height={150}

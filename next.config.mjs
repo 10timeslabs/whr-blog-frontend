@@ -6,6 +6,8 @@ const nextConfig = {
     unoptimized: true,
   },
   optimizeFonts: false,
+  basePath: "/blog",
+  assetPrefix: "/blog",
 };
 
 export default nextConfig;
