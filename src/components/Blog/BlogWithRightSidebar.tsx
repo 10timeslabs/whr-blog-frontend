@@ -7,7 +7,7 @@ import Image from "next/image";
 import { BlogResponse } from "@/types/blog";
 import BlogSkeleton from "@/components/Blog/BlogSkeleton";
 import strapiApi from "@/lib/axios";
-import { getImageUrl } from '@/utils/imageUrl';
+import { getImageUrl } from "@/utils/imageUrl";
 
 const BlogWithRightSidebar: React.FC = () => {
   const [blogs, setBlogs] = React.useState<BlogResponse>();
@@ -59,7 +59,7 @@ const BlogWithRightSidebar: React.FC = () => {
                   <div className="col-lg-6 col-md-6" key={post.id}>
                     <div className="single-blog-card">
                       <div className="blog-image">
-                        <Link href={`/blog/${post.slug}`}>
+                        <Link href={`/${post.slug}`}>
                           <Image
                             src={getImageUrl(post.image.url)}
                             alt={post.image.alternativeText || post.title}
@@ -71,10 +71,10 @@ const BlogWithRightSidebar: React.FC = () => {
                       </div>
                       <div className="blog-content">
                         <h3>
-                          <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                          <Link href={`/${post.slug}`}>{post.title}</Link>
                         </h3>
                         <p>{post.shortText}</p>
-                        <Link href={`/blog/${post.slug}`} className="blog-btn">
+                        <Link href={`/${post.slug}`} className="blog-btn">
                           View More
                         </Link>
                       </div>

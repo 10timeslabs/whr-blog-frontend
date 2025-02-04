@@ -1,8 +1,5 @@
 import React from "react";
 import SingleBlogContent from "@/components/Blog/SingleBlogContent";
-import { baseApiUrl } from "@/config";
-import { BlogResponse } from "@/types/blog";
-import { Metadata } from "next";
 import { getAllPosts, getPostBySlug } from '@/lib/api';
 
 export async function generateStaticParams() {

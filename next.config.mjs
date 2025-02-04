@@ -7,7 +7,7 @@ const nextConfig = {
   },
   optimizeFonts: false,
   basePath: "/blog",
-  assetPrefix: "/blog",
+  // assetPrefix: "/assets",
 };
 
 export default nextConfig;

@@ -34,12 +34,12 @@ const MarkdownComponents: Components = {
       <i className="ri-double-quotes-l"></i>
       {props.children}
       <div className="quote-shape">
-        <Image
-          src="/blog/circle-shape.png"
+        {/* <Image
+          src="/blog/assets/circle-shape.png"
           alt="quote shape"
           width={150}
           height={150}
-        />
+        /> */}
       </div>
     </blockquote>
   ),

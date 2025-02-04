@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import Logo from "/public/croppedlogo.png";
+import Logo from "/public/assets/croppedlogo.png";
 import Image from "next/image";
 import './footer.css';
 

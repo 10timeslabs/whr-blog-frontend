@@ -118,7 +118,7 @@ const SingleBlogContent: React.FC = () => {
 
                     <div className="quote-shape">
                       <Image
-                        src="/blog/circle-shape.png"
+                        src="/assets/circle-shape.png"
                         alt="image"
                         width={150}
                         height={150}

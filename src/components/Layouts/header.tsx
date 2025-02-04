@@ -27,10 +27,11 @@ const Header = () => {
 
           <nav className="d-none d-lg-flex align-items-center">
             <div className="nav-links d-flex align-items-center gap-4">
-              <a href="/get-started" className="cta-button">
+              <a href="https://console.whr.ai" className="cta-button">
                 Get Started
               </a>
             </div>
+
           </nav>
         </div>
       </div>
