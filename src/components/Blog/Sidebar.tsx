@@ -81,7 +81,7 @@ const Sidebar: React.FC = () => {
 
           {recentPosts?.map((post) => (
             <article className="item" key={post.id}>
-              <Link href={`/blog/${post.slug}`} className="thumb">
+              <Link href={`/${post.slug}`} className="thumb">
                 <span
                   className="fullimage"
                   role="img"
