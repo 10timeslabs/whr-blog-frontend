@@ -133,7 +133,7 @@ const SingleBlogContent: React.FC<SingleBlogContentProps> = ({ slug }) => {
                     {blog.blogDetailsText}
                   </ReactMarkdown>
 
-                  <div className="article-share">
+                  {/* <div className="article-share">
                     <div className="row align-items-center">
                       <div className="col-lg-6 col-md-6">
                         <div className="share-content">
@@ -181,7 +181,7 @@ const SingleBlogContent: React.FC<SingleBlogContentProps> = ({ slug }) => {
                         </ul>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             ) : null}

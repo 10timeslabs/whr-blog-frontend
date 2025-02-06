@@ -4,8 +4,8 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { BlogResponse } from "@/types/blog";
 import { format } from "date-fns";
-import strapiApi from '@/lib/axios';
-import { getImageUrl } from '@/utils/imageUrl';
+import strapiApi from "@/lib/axios";
+import { getImageUrl } from "@/utils/imageUrl";
 
 const SidebarSkeleton = () => (
   <div className="animate-pulse">
@@ -92,12 +92,12 @@ const Sidebar: React.FC = () => {
               </Link>
               <div className="info">
                 <span>
-                  {format(new Date(post.date), "do MMMM yyyy")}
+                  <Link href={`/${post.slug}`}>
+                    {format(new Date(post.date), "do MMMM yyyy")}
+                  </Link>
                 </span>
                 <h4 className="title usmall">
-                  <Link href={`/${post.slug}`}>
-                    {post.title}
-                  </Link>
+                  <Link href={`/${post.slug}`}>{post.title}</Link>
                 </h4>
               </div>
             </article>
