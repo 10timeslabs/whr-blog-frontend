@@ -95,7 +95,7 @@ const Sidebar: React.FC = () => {
                   {format(new Date(post.date), "do MMMM yyyy")}
                 </span>
                 <h4 className="title usmall">
-                  <Link href={`/blog/${post.slug}`}>
+                  <Link href={`/${post.slug}`}>
                     {post.title}
                   </Link>
                 </h4>
