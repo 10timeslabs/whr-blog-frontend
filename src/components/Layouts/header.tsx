@@ -1,4 +1,7 @@
+import Image from "next/image";
 import "./header.css";
+import herologo from "/public/assets/whrLogo.svg";
+import heroText from "/public/assets/whrText.svg";
 
 const Header = () => {
   return (
@@ -10,14 +13,14 @@ const Header = () => {
               href="/"
               className="d-flex align-items-center text-decoration-none"
             >
-              <img
-                src="https://whr.ai/assets/img/croppedlogo.png"
+              <Image
+                src={herologo}
                 alt="Whr.ai Logo"
                 className="logo-img"
                 loading="lazy"
               />
-              <img
-                src="https://whr.ai/assets/img/Whr.ai.png"
+              <Image
+                src={heroText}
                 alt="Whr.ai Text"
                 className="logo-text ms-2"
                 loading="lazy"
@@ -31,7 +34,6 @@ const Header = () => {
                 Get Started
               </a>
             </div>
-
           </nav>
         </div>
       </div>
